@@ -8,7 +8,6 @@ import (
 	"github.com/gen2brain/beeep"
 	"github.com/getlantern/systray"
 	"github.com/makiuchi-d/gozxing"
-	"github.com/makiuchi-d/gozxing/common"
 	"github.com/makiuchi-d/gozxing/qrcode"
 	"github.com/vova616/screenshot"
 )
@@ -60,7 +59,7 @@ func onScan() {
 	qrReader := qrcode.NewQRCodeReader()
 
 	src := gozxing.NewLuminanceSourceFromImage(img)
-	bmp, _ := gozxing.NewBinaryBitmap(common.NewHybridBinarizer(src))
+	bmp, _ := gozxing.NewBinaryBitmap(gozxing.NewHybridBinarizer(src))
 
 	result, _ := qrReader.Decode(bmp, nil)
 	if result == nil {
